@@ -1,0 +1,237 @@
+:root {
+  --ff-heading: "Montserrat", sans-serif;
+  --ff-body: "Lato", sans-serif;
+  --ff-open-sans: "Open Sans", sans-serif;
+  --fw-bold: 900;
+
+  --clr-brand: #0092d6;
+  --clr-gray: #999999;
+  --clr-light-gray: #f0f0f0;
+}
+
+/** ---- */
+/** GENERAL RESETS */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  /* 
+  This defines what 1rem is
+  1rem = 10px; 10px/16px = 62.5%
+  */
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: white;
+  font-family: "Lato", sans-serif;
+}
+
+h1,
+h2 {
+  font-family: var(--ff-heading);
+  font-weight: var(--fw-bold);
+}
+
+.container {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 600px;
+}
+
+.ratings {
+  --rating-align;
+  --rating-direction;
+  display: flex;
+  flex-direction: var(--rating-direction, column);
+}
+
+.star-rating-container {
+  text-align: var(--rating-align, center);
+  flex-basis: auto;
+  margin: 0 0 30px 0;
+}
+
+.review-section {
+  padding: 40px 30px;
+  text-align: center;
+}
+
+.review-heading {
+  --heading-align;
+  text-align: var(--heading-align, inherit);
+  margin-bottom: 30px;
+}
+
+.total-star-rating {
+  font-size: 3.7rem;
+}
+
+.total-reviews {
+  font-size: 1.5rem;
+}
+
+.star-rating {
+  margin-bottom: 10px;
+}
+
+.star-rating,
+.rating-breakdown-label {
+  display: inline-block;
+}
+
+.star-rating-out,
+.rating-breakdown-outer-label {
+  position: relative;
+  width: 100%;
+}
+
+.star-rating-in,
+.rating-breakdown-inner-label {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.star-rating-out::before,
+.star-rating-in::before,
+.rating-breakdown-outer-label::before,
+.rating-breakdown-inner-label::before {
+  content: "\f005 \f005 \f005 \f005 \f005";
+  font-family: "Font Awesome 5 Free";
+}
+
+.star-rating-out::before,
+.star-rating-in::before {
+  font-size: 2rem;
+  color: var(--clr-brand);
+}
+
+.rating-breakdown-outer-label::before,
+.rating-breakdown-inner-label::before {
+  font-size: 1.3rem;
+  color: var(--clr-gray);
+}
+
+.star-rating-out::before,
+.rating-breakdown-outer-label::before {
+  /* Font Weight <= 500 creates star outlines */
+  font-weight: 500;
+}
+
+.star-rating-in::before,
+.rating-breakdown-inner-label::before {
+  /* Font Weight > 500 creates solid stars */
+  font-weight: 600;
+}
+
+.star-review-5 .rating-breakdown-inner-label {
+  width: 100%;
+}
+.star-review-4 .rating-breakdown-inner-label {
+  width: 80%;
+}
+.star-review-3 .rating-breakdown-inner-label {
+  width: 60%;
+}
+.star-review-2 .rating-breakdown-inner-label {
+  width: 40%;
+}
+.star-review-1 .rating-breakdown-inner-label {
+  width: 20%;
+}
+
+.rating-breakdown {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin-bottom: 30px;
+}
+.rating-breakdown:hover > * {
+  opacity: 0.5;
+}
+.rating-breakdown:hover > *:hover {
+  opacity: 1;
+}
+
+.rating-breakdown-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+
+.rating-breakdown-bar {
+  position: relative;
+  width: 100%;
+  max-width: 13rem;
+  height: 1.5rem;
+  margin: 0 5px 0 15px;
+  background-color: var(--clr-light-gray);
+}
+
+.rating-breakdown-inner-bar {
+  position: absolute;
+  inset: 0;
+  width: 50%;
+  height: 100%;
+  background-color: var(--clr-brand);
+}
+
+.rating-breakdown-nums {
+  font-family: var(--ff-open-sans);
+  font-size: 1.2rem;
+}
+
+.cta-btns {
+  --cta-btn-spacing;
+  --cta-btn-direction;
+  display: flex;
+  justify-content: center;
+  flex-direction: var(--cta-btn-direction, column);
+}
+
+.cta-btn {
+  font-family: inherit;
+  font-size: 1.3rem;
+  padding: 1.3rem 2rem;
+  border: 2px solid black;
+  border-radius: 3px;
+  background-color: white;
+  box-shadow: 2px 3px 5px 0 #8888886b;
+}
+
+.cta-btn:hover {
+  transform: translateY(1px);
+  box-shadow: 0 0 0 0 #88888800;
+  opacity: 0.8;
+}
+
+.cta-btn:not(:last-child) {
+  margin: var(--cta-btn-spacing, 0 0 5px 0);
+}
+
+.cta-btn > .fas {
+  margin-right: 10px;
+}
+
+@media screen and (min-width: 600px) {
+  .ratings {
+    --rating-align: left;
+    --rating-direction: row;
+
+  }
+  .review-heading {
+    --heading-align: left;
+  }
+  .cta-btns {
+    --cta-btn-spacing: 0 15px 0 0;
+    --cta-btn-direction: row;
+  }
+}
